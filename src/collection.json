@@ -1,0 +1,60 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "setup-angular-material": {
+      "description": "add @angular/material",
+      "factory": "./setup/angular-material/index",
+      "schema": "./setup/angular-material/schema.json"
+    },
+    "setup-angular-material-schematic": {
+      "description": "add @angular/material",
+      "factory": "./setup/angular-material-schematic/index",
+      "schema": "./setup/angular-material-schematic/schema.json"
+    },
+    "setup-jest": {
+      "description": "Replace Karma with Jest",
+      "factory": "./setup/jest/index",
+      "schema": "./setup/jest/schema.json"
+    },
+    "setup-ngrx": {
+      "description": "Set up the NGRX store infrastructure",
+      "factory": "./setup/ngrx/index",
+      "schema": "./setup/ngrx/schema.json"
+    },
+    "setup-project": {
+      "description": "Set up the project using a list of pre-defined schematics",
+      "factory": "./setup/project/index",
+      "schema": "./setup/project/schema.json"
+    },
+    "component": {
+      "description": "Create a new component.",
+      "factory": "./component/index",
+      "schema": "./component/schema.json"
+    },
+    "dialog": {
+      "description": "Create a new dialog.",
+      "factory": "./dialog/index",
+      "schema": "./dialog/schema.json"
+    },
+    "model": {
+      "description": "Create a new model.",
+      "factory": "./model/index",
+      "schema": "./model/schema.json"
+    },
+    "service": {
+      "description": "Create a new service.",
+      "factory": "./service/index",
+      "schema": "./service/schema.json"
+    },
+    "store": {
+      "description": "Create a new store.",
+      "factory": "./store/index",
+      "schema": "./store/schema.json"
+    },
+    "table": {
+      "description": "Create a new table component.",
+      "factory": "./table/index",
+      "schema": "./table/schema.json"
+    }
+  }
+}

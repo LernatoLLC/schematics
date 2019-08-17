@@ -1,0 +1,61 @@
+{
+  "name": "@lernato/schematics",
+  "version": "1.3.4",
+  "license": "MIT",
+  "description": "Angular schematics for doing things the @lernato way.",
+  "author": "BJ Anderson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bjanderson/lernato-schematics.git"
+  },
+  "schematics": "./dist/collection.json",
+  "types": "./dist/index.d.ts",
+  "keywords": [
+    "schematics"
+  ],
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts,json"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist/",
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "copy 'src/**/*.json' 'src/**/files/*' 'src/**/optionalFiles/*' 'dist/'",
+    "prebuild:test": "rimraf test/",
+    "build:test": "tsc -p tsconfig.spec.json",
+    "postbuild:test": "copy 'src/**/*.json' 'src/**/files/*' 'src/**/optionalFiles/*' 'test/'",
+    "prepack": "npm run build",
+    "test": "npm run build:test && jasmine test/**/*_spec.js",
+    "prepush": "npm run build",
+    "push": "npm run build && npm publish --access public",
+    "push:major": "npm version major --no-git-tag-version && npm run push",
+    "push:minor": "npm version minor --no-git-tag-version && npm run push",
+    "push:patch": "npm version patch --no-git-tag-version && npm run push",
+    "watch": "npm-watch"
+  },
+  "devDependencies": {
+    "@angular-devkit/core": "8.1.2",
+    "@angular-devkit/schematics": "8.1.2",
+    "@angular-devkit/schematics-cli": "0.801.2",
+    "@angular/cli": "8.1.2",
+    "@schematics/angular": "8.1.2",
+    "@types/jasmine": "3.3.15",
+    "@types/node": "12.6.8",
+    "copy": "0.3.2",
+    "jasmine": "3.4.0",
+    "npm-watch": "0.6.0",
+    "rimraf": "2.6.3",
+    "rxjs": "6.5.2",
+    "typescript": "3.4.5"
+  },
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
+}

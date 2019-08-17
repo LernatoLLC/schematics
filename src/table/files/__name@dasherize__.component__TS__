@@ -1,0 +1,79 @@
+import { SelectionModel } from '@angular/cdk/collections';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: '<%= dasherize(prefix) %>-<%= dasherize(name) %>',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+  templateUrl: './<%= dasherize(name) %>.component.html'
+})
+export class <%= classify(name) %>Component implements OnChanges {
+
+  @Input() tableData: any[] = [];
+
+  dataSource = new MatTableDataSource<any>([]);
+  selection = new SelectionModel<any>(true, []);
+  displayedColumns: string[] = [
+    'select',
+    'value',
+  ];
+  pageSizes = [5, 10, 20];
+
+  paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) set matPaginator(paginator: MatPaginator) {
+    this.paginator = paginator;
+    if (this.dataSource != null && this.dataSource.paginator !== this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+
+  sort: MatSort;
+  @ViewChild(MatSort, {static: false}) set matSort(sort: MatSort) {
+    this.sort = sort;
+    if (this.dataSource != null && this.dataSource.sort !== this.sort) {
+      this.dataSource.sort = this.sort;
+    }
+  }
+
+  constructor() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.tableData != null && changes.tableData.currentValue != null) {
+      this.updateDataSource();
+    }
+  }
+
+  updateDataSource(): void {
+    this.dataSource = new MatTableDataSource(this.tableData);
+
+    if (this.paginator != null) {
+      this.dataSource.paginator = this.paginator;
+    }
+
+    if (this.sort != null) {
+      this.dataSource.sort = this.sort;
+    }
+  }
+
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle(): void {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: any): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'Select' : 'Deselect'} All`;
+    }
+    return `${this.selection.isSelected(row) ? 'Deselect' : 'Select'} Row`;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "ServiceSchema",
+  "title": "Service Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "alias": "n",
+      "type": "string",
+      "description": "The name of your service",
+      "x-prompt": "Please enter a name for your service"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

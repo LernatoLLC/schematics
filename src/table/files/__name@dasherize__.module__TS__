@@ -1,0 +1,29 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+<% if (route) { %>import { RouterModule, Routes } from '@angular/router';
+
+export const routes: Routes = [{
+  path: '',
+  component: <%= classify(name) %>Component
+}];
+<% } %>
+@NgModule({
+  declarations: [ <%= classify(name) %>Component ],
+
+  exports: [ <%= classify(name) %>Component ],
+
+  imports: [
+    CommonModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,<% if (route) { %>
+    RouterModule.forChild(routes)<% } %>
+  ]
+})
+export class <%= classify(name) %>Module {}

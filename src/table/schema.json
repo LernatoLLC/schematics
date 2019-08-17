@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "ComponentSchema",
+  "title": "Component Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "alias": "n",
+      "type": "string",
+      "description": "The name of your table component",
+      "x-prompt": "Please enter a name for your table component"
+    },
+    "prefix": {
+      "alias": "p",
+      "type": "string",
+      "description": "The html element prefix for your table component",
+      "x-prompt": "Please enter a prefix for your table component"
+    },
+    "route": {
+      "alias": "r",
+      "default": false,
+      "type": "boolean",
+      "description": "Should this table component be routeable?",
+      "x-prompt": "Is this a routeable module?"
+    }
+  },
+  "required": [
+    "name",
+    "prefix"
+  ]
+}

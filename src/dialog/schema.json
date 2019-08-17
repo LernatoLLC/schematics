@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "DialogSchema",
+  "title": "Dialog Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "alias": "n",
+      "type": "string",
+      "description": "The name of your dialog",
+      "x-prompt": "Please enter a name for your dialog"
+    },
+    "prefix": {
+      "alias": "p",
+      "type": "string",
+      "description": "The html element prefix for your dialog",
+      "x-prompt": "Please enter a prefix for your dialog"
+    }
+  },
+  "required": [
+    "name",
+    "prefix"
+  ]
+}

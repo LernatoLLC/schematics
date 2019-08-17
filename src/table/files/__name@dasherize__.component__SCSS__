@@ -1,0 +1,11 @@
+:host {
+  .<%= dasherize(name) %> {
+    table {
+      width: 100%;
+
+      .mat-column-select {
+        overflow: initial;
+      }
+    }
+  }
+}

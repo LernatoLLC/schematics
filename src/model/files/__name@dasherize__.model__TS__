@@ -1,0 +1,11 @@
+import { getObject, getString } from '@lernato/common';
+
+export class <%= classify(name) %> {
+
+  value: string;
+
+  constructor(obj?: Partial<<%= classify(name) %>>) {
+    obj = getObject(obj);
+    this.value = getString(obj.value);
+  }
+}
