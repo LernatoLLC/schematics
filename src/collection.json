@@ -16,6 +16,11 @@
       "factory": "./setup/jest/index",
       "schema": "./setup/jest/schema.json"
     },
+    "setup-styles": {
+      "description": "Setup Styles",
+      "factory": "./setup/styles/index",
+      "schema": "./setup/styles/schema.json"
+    },
     "setup-ngrx": {
       "description": "Set up the NGRX store infrastructure",
       "factory": "./setup/ngrx/index",

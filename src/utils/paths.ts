@@ -1,11 +1,12 @@
 const angularJson = 'angular.json';
-const jestConf = `jest.config.js`
+const jestConf = `jest.config.js`;
 const karmaConf = `karma.conf.js`;
 const packageJson = 'package.json';
 const tsconfigAppJson = `tsconfig.app.json`;
 const tsconfigSpecJson = `tsconfig.spec.json`;
 
 const srcDir = `src`;
+const stylesScss = `${srcDir}/styles.scss`;
 const testTs = `${srcDir}/test.ts`;
 
 const appDir = `${srcDir}/app`;
@@ -27,7 +28,8 @@ export const paths = {
   servicesDir,
   srcDir,
   storeDir,
+  stylesScss,
   testTs,
   tsconfigAppJson,
   tsconfigSpecJson,
-}
+};

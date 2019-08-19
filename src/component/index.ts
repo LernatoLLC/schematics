@@ -1,5 +1,21 @@
-import { camelize, capitalize, classify, dasherize } from '@angular-devkit/core/src/utils/strings';
-import { apply, chain, filter, mergeWith, move, Rule, SchematicContext, template, Tree, url } from '@angular-devkit/schematics';
+import {
+  camelize,
+  capitalize,
+  classify,
+  dasherize,
+} from '@angular-devkit/core/src/utils/strings';
+import {
+  apply,
+  chain,
+  filter,
+  mergeWith,
+  move,
+  Rule,
+  SchematicContext,
+  template,
+  Tree,
+  url,
+} from '@angular-devkit/schematics';
 import { paths } from '../utils';
 import * as fileExtensions from '../utils/file-extensions';
 
@@ -7,16 +23,14 @@ const stringUtils = {
   camelize,
   capitalize,
   classify,
-  dasherize
+  dasherize,
 };
 
-export default function (options: any): Rule {
+export default function(options: any): Rule {
   return (tree: Tree, context: SchematicContext) => {
     options = setupOptions(options);
 
-    const rules = [
-      createFiles(options),
-    ];
+    const rules = [createFiles(options)];
 
     return chain(rules)(tree, context);
   };
@@ -28,11 +42,14 @@ function setupOptions(options: any): any {
     const name = options.name.replace(re, '').trim();
 
     if (name === '') {
-      throw new Error(`Invalid component name: ${options.name}. Name it something other than "Component"`);
+      throw new Error(
+        `Invalid component name: ${
+          options.name
+        }. Name it something other than "Component"`
+      );
     } else {
       options.name = name;
     }
-
   } catch (err) {
     throw new Error(`Invalid component name: ${options.name}`);
   }
@@ -42,16 +59,16 @@ function setupOptions(options: any): any {
 
 function createFiles(options: any): Rule {
   return mergeWith(
-      apply(
-        url('./files'),
-        [
-          filter((path) => !path.includes('.module') || options.module || options.route),
-          template({
-            ...fileExtensions,
-            ...options,
-            ...stringUtils,
-          }),
-          move(`${paths.componentsDir}/${dasherize(options.name)}`)
-        ]
-      ));
+    apply(url('./files'), [
+      filter(
+        path => !path.includes('.module') || options.module || options.route
+      ),
+      template({
+        ...fileExtensions,
+        ...options,
+        ...stringUtils,
+      }),
+      move(`${paths.componentsDir}/${dasherize(options.name)}`),
+    ])
+  );
 }

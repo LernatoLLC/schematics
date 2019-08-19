@@ -1,0 +1,62 @@
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.3rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1.1rem;
+}
+h6 {
+  font-size: 1rem;
+}
+
+hr {
+  border-bottom: 1px solid lightslategray;
+  margin: 1.5rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.centered-image {
+  @extend .center;
+
+  img {
+    width: 90%;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
