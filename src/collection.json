@@ -16,6 +16,11 @@
       "factory": "./setup/jest/index",
       "schema": "./setup/jest/schema.json"
     },
+    "setup-prettier": {
+      "description": "Setup Prettier",
+      "factory": "./setup/prettier/index",
+      "schema": "./setup/prettier/schema.json"
+    },
     "setup-styles": {
       "description": "Setup Styles",
       "factory": "./setup/styles/index",

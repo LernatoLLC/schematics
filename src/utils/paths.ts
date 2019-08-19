@@ -4,6 +4,7 @@ const karmaConf = `karma.conf.js`;
 const packageJson = 'package.json';
 const tsconfigAppJson = `tsconfig.app.json`;
 const tsconfigSpecJson = `tsconfig.spec.json`;
+const tslintJson = `tslint.json`;
 
 const srcDir = `src`;
 const stylesScss = `${srcDir}/styles.scss`;
@@ -32,4 +33,5 @@ export const paths = {
   testTs,
   tsconfigAppJson,
   tsconfigSpecJson,
+  tslintJson,
 };

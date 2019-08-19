@@ -106,7 +106,7 @@ function addDependenciesToPackageJson(): Rule {
     dependencies.forEach(name => {
       const dep = <NodeDependency>{
         name,
-        type: NodeDependencyType.Dev,
+        type: NodeDependencyType.Default,
         version: getPackageVersion(name),
       };
       addPackageJsonDependency(tree, dep);

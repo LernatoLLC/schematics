@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SetupPrettierSchema",
+  "title": "Setup Prettier Schema",
+  "type": "object",
+  "properties": {},
+  "required": []
+}
