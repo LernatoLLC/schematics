@@ -56,9 +56,14 @@ function createFiles(options: any): Rule {
 
 function addDependenciesToPackageJson(): Rule {
   return (tree: Tree, context: SchematicContext): Tree => {
-    const dependencies = ['tslint-config-airbnb', 'tslint-config-prettier'];
+    const dependencies = [
+      'tslint-config-airbnb',
+      'tslint-config-prettier',
+      'tslint-plugin-prettier',
+      'prettier',
+    ];
 
-    dependencies.forEach(name => {
+    dependencies.forEach((name) => {
       const dep = <NodeDependency>{
         name,
         type: NodeDependencyType.Dev,
@@ -83,12 +88,13 @@ function updateTsLintJson(): Rule {
       'tslint:recommended',
       'tslint-config-airbnb',
       'tslint-config-prettier',
+      'tslint-plugin-prettier',
     ];
 
     json.rules['arrow-parens'] = true;
     json.rules['interface-name'] = true;
     json.rules['max-classes-per-file'] = [true, 1, 'exclude-class-expressions'];
-    json.rules['member-access'] = false;
+    json.rules['member-access'] = true;
     json.rules['no-consecutive-blank-lines'] = true;
     json.rules['no-require-imports'] = true;
     json.rules['object-literal-sort-keys'] = [true, 'ignore-case'];
@@ -99,6 +105,7 @@ function updateTsLintJson(): Rule {
         'named-imports-order': 'case-insensitive',
       },
     ];
+    json.rules['prettier'] = true;
     json.rules['variable-name'] = { options: ['check-format', 'ban-keywords'] };
 
     delete json.rules['angular-whitespace'];
