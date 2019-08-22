@@ -6,18 +6,18 @@ import { <%= classify(dialogBodyName) %>Component } from './<%= dasherize(dialog
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: '<%= dasherize(prefix) %>-<%= dasherize(dialogName) %>',
   styleUrls: ['./<%= dasherize(dialogName) %>.component.scss'],
-  templateUrl: './<%= dasherize(dialogName) %>.component.html'
+  templateUrl: './<%= dasherize(dialogName) %>.component.html',
 })
 export class <%= classify(dialogName) %>Component {
-  @Input() showButton = true;
+  @Input() public showButton = true;
 
-  dialogRef: MatDialogRef<<%= classify(dialogBodyName) %>Component>;
+  private dialogRef: MatDialogRef<<%= classify(dialogBodyName) %>Component>;
 
   constructor(
     private dialog: MatDialog
   ) {}
 
-  open(): void {
+  public open(): void {
     const config = new MatDialogConfig();
     config.autoFocus = true;
     config.closeOnNavigation = true;

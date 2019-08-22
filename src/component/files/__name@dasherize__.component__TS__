@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: '<%= dasherize(prefix) %>-<%= dasherize(name) %>',
   styleUrls: ['./<%= dasherize(name) %>.component.scss'],
-  templateUrl: './<%= dasherize(name) %>.component.html'
+  templateUrl: './<%= dasherize(name) %>.component.html',
 })
 export class <%= classify(name) %>Component {
   constructor() {}

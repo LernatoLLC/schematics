@@ -16,10 +16,10 @@ import { <%= classify(dialogName) %>Component } from './<%= dasherize(dialogName
   exports: [ <%= classify(dialogName) %>Component ],
 
   imports: [
-    CommonModule,
+    CommonModule, //
     FormsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
   ]
 })
 export class <%= classify(dialogName) %>Module {}

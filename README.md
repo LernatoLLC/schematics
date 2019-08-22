@@ -4,13 +4,13 @@
 
 # Schematics
 
-## add-jest
+## setup-jest
 
-    ng generate @lernato/schematics:add-jest
+    ng generate @lernato/schematics:setup-jest
 
 ### Parameters
 
-No paramters.
+No parameters.
 
 ### Description
 
@@ -22,25 +22,63 @@ Deletes `src/karma.conf.js` and `src/test.ts`
 
 Creates `src/jest.config.js`
 
+## setup-prettier
 
-## add-ngrx
-
-    ng generate @lernato/schematics:add-ngrx
+    ng generate @lernato/schematics:setup-prettier
 
 ### Parameters
 
-No paramters.
+No parameters.
 
 ### Description
 
-Wire up ngrx with lazy-loadable store configuration and a router store out of the box.
+Add the prettier code formatter to your project.
+Also modifies tslint.json.
+Totally opinionated - you might not agree with it, so don't use it if you don't like it.
 
-Installs `@ngrx/(store|effects|router-store)` and `@lernato/common`.
+Creates `prettier.config.js`
 
-Adds ngrx to `app.module.ts`.
+## setup-styles
 
-Creates actions, effects, service and module with tests in `src/store/router`
+    ng generate @lernato/schematics:setup-styles
 
+### Parameters
+
+No parameters.
+
+### Description
+
+Add some default styles to your project.
+Also creates an angular material theme file, and imports it into your html via your angular.json file.
+
+Overwrites `src/styles.scss`
+
+Generates the following files
+
+- src/material.scss
+- src/styles/
+  - material-overrides/
+    - gitkeep
+  - \_colors.scss
+  - \_fonts.scss
+  - \_globals.scss
+  - \_spacing.scss
+
+## setup-project
+
+    ng generate @lernato/schematics:setup-project
+
+### Parameters
+
+No parameters.
+
+### Description
+
+Calls the other setup schematics
+
+- setup-jest
+- setup-prettier
+- setup-styles
 
 ## component
 
@@ -48,12 +86,12 @@ Creates actions, effects, service and module with tests in `src/store/router`
 
 ### Parameters
 
-|||||
-|-|-|-|-|
-| --name, -n | string | REQUIRED | The name of the component. |
-| --prefix, -p | string | REQUIRED | The html element prefix for your component. |
-| --module, -m | boolean | default: true | Create a module for the component. |
-| --route, -r | boolean | default: false | Create a routable module for the component. |
+|              |         |                |                                             |
+| ------------ | ------- | -------------- | ------------------------------------------- |
+| --name, -n   | string  | REQUIRED       | The name of the component.                  |
+| --prefix, -p | string  | REQUIRED       | The html element prefix for your component. |
+| --module, -m | boolean | default: true  | Create a module for the component.          |
+| --route, -r  | boolean | default: false | Create a routable module for the component. |
 
 ### Description
 
@@ -62,18 +100,16 @@ Places files in `src/app/components`.
 
 Generates the following files
 
-* src/app/components/&lt;component-name&gt;
-  * index.ts
-  * &lt;component-name&gt;.component.html
-  * &lt;component-name&gt;.component.scss
-  * &lt;component-name&gt;.component.spec.ts
-  * &lt;component-name&gt;.component.ts
-
+- src/app/components/&lt;component-name&gt;
+  - index.ts
+  - &lt;component-name&gt;.component.html
+  - &lt;component-name&gt;.component.scss
+  - &lt;component-name&gt;.component.spec.ts
+  - &lt;component-name&gt;.component.ts
 
 If `module` or `route` are set, it also generates a module file at:
 
 `src/app/components/<component-name>/<component-name>.module.ts`
-
 
 ## dialog
 
@@ -81,9 +117,9 @@ If `module` or `route` are set, it also generates a module file at:
 
 ### Parameters
 
-|||||
-|-|-|-|-|
-| --name, -n | string | REQUIRED | The name of the dialog. |
+|              |        |          |                                          |
+| ------------ | ------ | -------- | ---------------------------------------- |
+| --name, -n   | string | REQUIRED | The name of the dialog.                  |
 | --prefix, -p | string | REQUIRED | The html element prefix for your dialog. |
 
 ### Description
@@ -93,17 +129,17 @@ Places files in `src/app/components`.
 
 Generates the following files
 
-* src/app/components/&lt;dialog-name&gt;-dialog
-  * index.ts
-  * &lt;dialog-name&gt;-dialog-body.component.html
-  * &lt;dialog-name&gt;-dialog-body.component.scss
-  * &lt;dialog-name&gt;-dialog-body.component.spec.ts
-  * &lt;dialog-name&gt;-dialog-body.component.ts
-  * &lt;dialog-name&gt;-dialog.component.html
-  * &lt;dialog-name&gt;-dialog.component.scss
-  * &lt;dialog-name&gt;-dialog.component.spec.ts
-  * &lt;dialog-name&gt;-dialog.component.ts
-  * &lt;dialog-name&gt;-dialog.module.ts
+- src/app/components/&lt;dialog-name&gt;-dialog
+  - index.ts
+  - &lt;dialog-name&gt;-dialog-body.component.html
+  - &lt;dialog-name&gt;-dialog-body.component.scss
+  - &lt;dialog-name&gt;-dialog-body.component.spec.ts
+  - &lt;dialog-name&gt;-dialog-body.component.ts
+  - &lt;dialog-name&gt;-dialog.component.html
+  - &lt;dialog-name&gt;-dialog.component.scss
+  - &lt;dialog-name&gt;-dialog.component.spec.ts
+  - &lt;dialog-name&gt;-dialog.component.ts
+  - &lt;dialog-name&gt;-dialog.module.ts
 
 ## model
 
@@ -111,8 +147,8 @@ Generates the following files
 
 ### Parameters
 
-|||||
-|-|-|-|-|
+|            |        |          |                         |
+| ---------- | ------ | -------- | ----------------------- |
 | --name, -n | string | REQUIRED | The name of the dialog. |
 
 ### Description
@@ -125,10 +161,10 @@ Places files in `src/app/models`.
 
 Generates the following files
 
-* src/app/models/&lt;model-name&gt;
-  * index.ts
-  * &lt;model-name&gt;.model.spec.ts
-  * &lt;model-name&gt;.model.ts
+- src/app/models/&lt;model-name&gt;
+  - index.ts
+  - &lt;model-name&gt;.model.spec.ts
+  - &lt;model-name&gt;.model.ts
 
 ## service
 
@@ -136,8 +172,8 @@ Generates the following files
 
 ### Parameters
 
-|||||
-|-|-|-|-|
+|            |        |          |                         |
+| ---------- | ------ | -------- | ----------------------- |
 | --name, -n | string | REQUIRED | The name of the dialog. |
 
 ### Description
@@ -150,32 +186,7 @@ Places files in `src/app/services`.
 
 Generates the following files
 
-* src/app/services/&lt;service-name&gt;
-  * index.ts
-  * &lt;service-name&gt;.service.spec.ts
-  * &lt;service-name&gt;.service.ts
-
-## store
-
-    ng generate @lernato/schematics:store -n <store-name>
-
-### Parameters
-
-|||||
-|-|-|-|-|
-| --name, -n | string | REQUIRED | The name of the dialog. |
-
-### Description
-
-Generate an ngrx store, with unit tests, and automatically add it to the exports from `src/app/store/index.ts`
-
-Creates `src/app/store/index.ts` if it does not already exist.
-
-Places files in `src/app/store`.
-
-Generates the following files
-
-* src/app/store/&lt;store-name&gt;
-  * index.ts
-  * &lt;store-name&gt;.store.spec.ts
-  * &lt;store-name&gt;.store.ts
+- src/app/services/&lt;service-name&gt;
+  - index.ts
+  - &lt;service-name&gt;.service.spec.ts
+  - &lt;service-name&gt;.service.ts

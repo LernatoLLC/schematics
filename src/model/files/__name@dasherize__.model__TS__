@@ -2,10 +2,10 @@ import { getObject, getString } from '@lernato/common';
 
 export class <%= classify(name) %> {
 
-  value: string;
+  public value: string;
 
-  constructor(obj?: Partial<<%= classify(name) %>>) {
-    obj = getObject(obj);
+  constructor(o?: Partial<<%= classify(name) %>>) {
+    const obj = getObject(o);
     this.value = getString(obj.value);
   }
 }

@@ -26,11 +26,6 @@
       "factory": "./setup/styles/index",
       "schema": "./setup/styles/schema.json"
     },
-    "setup-ngrx": {
-      "description": "Set up the NGRX store infrastructure",
-      "factory": "./setup/ngrx/index",
-      "schema": "./setup/ngrx/schema.json"
-    },
     "setup-project": {
       "description": "Set up the project using a list of pre-defined schematics",
       "factory": "./setup/project/index",
@@ -55,11 +50,6 @@
       "description": "Create a new service.",
       "factory": "./service/index",
       "schema": "./service/schema.json"
-    },
-    "store": {
-      "description": "Create a new store.",
-      "factory": "./store/index",
-      "schema": "./store/schema.json"
     },
     "table": {
       "description": "Create a new table component.",

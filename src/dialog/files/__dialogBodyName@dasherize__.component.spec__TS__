@@ -8,7 +8,7 @@ const data: any = {
   parent: {}
 };
 
-let component;
+let component: any;
 function init() {
   component = new <%= classify(dialogBodyName) %>Component(dialogRef, data);
 }

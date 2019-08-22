@@ -97,7 +97,6 @@ function updateTsLintJson(): Rule {
     json.rules['member-access'] = true;
     json.rules['no-consecutive-blank-lines'] = true;
     json.rules['no-require-imports'] = true;
-    json.rules['object-literal-sort-keys'] = [true, 'ignore-case'];
     json.rules['ordered-imports'] = [
       true,
       {

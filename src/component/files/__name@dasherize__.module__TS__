@@ -14,8 +14,8 @@ export const routes: Routes = [{
   exports: [ <%= classify(name) %>Component ],
 
   imports: [
-    CommonModule<% if (route) { %>,
-    RouterModule.forChild(routes)<% } %>
+    CommonModule, //<% if (route) { %>
+    RouterModule.forChild(routes),<% } %>
   ]
 })
 export class <%= classify(name) %>Module {}
