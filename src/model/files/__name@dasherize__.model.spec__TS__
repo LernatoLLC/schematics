@@ -1,10 +1,10 @@
-import { defaultString } from '@lernato/common';
+import { DEFAULT_STRING } from '@lernato/common';
 import { <%= classify(name) %> } from './<%= dasherize(name) %>.model';
 
 describe('<%= classify(name) %>', () => {
   describe('constructor defaults', () => {
     const defaults = {
-      value: defaultString
+      value: DEFAULT_STRING
     };
 
     it('should have the expected fields', () => {

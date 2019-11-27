@@ -5,7 +5,7 @@ export class <%= classify(name) %> {
   public value: string;
 
   constructor(o?: Partial<<%= classify(name) %>>) {
-    const obj = getObject(o);
+    const obj: Partial<<%= classify(name) %>> = getObject(o);
     this.value = getString(obj.value);
   }
 }
