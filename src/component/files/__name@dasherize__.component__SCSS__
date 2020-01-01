@@ -1,4 +1,6 @@
 :host {
   .<%= dasherize(name) %> {
+    display: flex;
+    flex-direction: column;
   }
 }

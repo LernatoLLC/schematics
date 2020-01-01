@@ -1,6 +1,6 @@
 {
   "name": "@lernato/schematics",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "MIT",
   "description": "Angular schematics for doing things the @lernato way.",
   "author": "Lernato, LLC",
