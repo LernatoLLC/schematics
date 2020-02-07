@@ -1,4 +1,4 @@
-import { Tree } from "@angular-devkit/schematics";
+import { Tree } from '@angular-devkit/schematics';
 
 export function safeFileDelete(tree: Tree, path: string): boolean {
   if (tree.exists(path)) {

@@ -17,8 +17,5 @@
       "x-prompt": "Please enter a prefix for your dialog"
     }
   },
-  "required": [
-    "name",
-    "prefix"
-  ]
+  "required": ["name", "prefix"]
 }

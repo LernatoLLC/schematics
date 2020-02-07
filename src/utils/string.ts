@@ -1,4 +1,8 @@
-import { capitalize, dasherize, underscore } from '@angular-devkit/core/src/utils/strings';
+import {
+  capitalize,
+  dasherize,
+  underscore,
+} from '@angular-devkit/core/src/utils/strings';
 
 export function allcapsify(str: string): string {
   let caps = underscore(str).toUpperCase();

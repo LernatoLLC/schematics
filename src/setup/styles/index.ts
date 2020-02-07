@@ -84,11 +84,11 @@ function createFiles(options: any): Rule[] {
     'src/styles/material-overrides': ['.gitkeep'],
   };
 
-  folders.forEach(folder => {
+  folders.forEach((folder) => {
     rules.push(
       mergeWith(
         apply(files, [
-          filter(path => fileMap[folder].includes(path.replace('/', ''))),
+          filter((path) => fileMap[folder].includes(path.replace('/', ''))),
           tpl,
           move(folder),
         ])
@@ -103,7 +103,7 @@ function addDependenciesToPackageJson(): Rule {
   return (tree: Tree, context: SchematicContext): Tree => {
     const dependencies = ['@fortawesome/fontawesome-free'];
 
-    dependencies.forEach(name => {
+    dependencies.forEach((name) => {
       const dep = <NodeDependency>{
         name,
         type: NodeDependencyType.Default,

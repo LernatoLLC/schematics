@@ -1,9 +1,23 @@
-import { apply, chain, forEach, mergeWith, Rule, SchematicContext, template, Tree, url } from '@angular-devkit/schematics';
+import {
+  apply,
+  chain,
+  forEach,
+  mergeWith,
+  Rule,
+  SchematicContext,
+  template,
+  Tree,
+  url,
+} from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { addPackageJsonDependency, NodeDependency, NodeDependencyType } from '@schematics/angular/utility/dependencies';
+import {
+  addPackageJsonDependency,
+  NodeDependency,
+  NodeDependencyType,
+} from '@schematics/angular/utility/dependencies';
 import { getPackageVersion, paths, safeFileDelete } from '../../utils';
 
-export default function (options: any): Rule {
+export default function(options: any): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const rules = [
       deleteFiles(),
@@ -23,7 +37,7 @@ function deleteFiles(): Rule {
     safeFileDelete(tree, paths.karmaConf);
     safeFileDelete(tree, paths.testTs);
     return tree;
-  }
+  };
 }
 
 function updatePackageJson(): Rule {
@@ -33,19 +47,20 @@ function updatePackageJson(): Rule {
     text = text.replace(/~/g, '').replace(/\^/g, '');
     const json = JSON.parse(text);
 
-    const removeDevDeps = Object.keys(json.devDependencies)
-      .filter(d => d.includes('karma'));
+    const removeDevDeps = Object.keys(json.devDependencies).filter((d) =>
+      d.includes('karma')
+    );
 
-    removeDevDeps.forEach(d => {
+    removeDevDeps.forEach((d) => {
       delete json.devDependencies[d];
     });
 
-    json.scripts['test:cov'] = 'ng test --coverage'
+    json.scripts['test:cov'] = 'ng test --coverage';
 
     const packageJson = JSON.stringify(json, null, 2);
     tree.overwrite(paths.packageJson, packageJson);
     return tree;
-  }
+  };
 }
 
 function addJestDependenciesToPackageJson(): Rule {
@@ -58,7 +73,7 @@ function addJestDependenciesToPackageJson(): Rule {
       '@angular-builders/jest',
     ];
 
-    dependencies.forEach(name => {
+    dependencies.forEach((name) => {
       const dep = <NodeDependency>{
         name,
         type: NodeDependencyType.Dev,
@@ -78,14 +93,13 @@ function updateTsConfig(): Rule {
     updateTsConfigAppJson(tree);
     updateTsConfigSpecJson(tree);
     return tree;
-  }
+  };
 }
 
 function updateTsConfigAppJson(tree: Tree) {
   const fileContents = tree.read(paths.tsconfigAppJson);
   const text = fileContents != null ? fileContents.toString() : '';
   const json = JSON.parse(text);
-  json.exclude = json.exclude.filter(d => d !== 'test.ts');
   const tsconfigAppJson = JSON.stringify(json, null, 2);
   tree.overwrite(paths.tsconfigAppJson, tsconfigAppJson);
 }
@@ -97,7 +111,7 @@ function updateTsConfigSpecJson(tree: Tree) {
   json.compilerOptions.allowJs = true;
   json.compilerOptions.module = 'commonjs';
   json.compilerOptions.types = ['jest'];
-  json.files = json.files.filter(d => d !== 'src/test.ts');
+  json.files = json.files.filter((d) => d !== 'src/test.ts');
   const tsconfigSpecJson = JSON.stringify(json, null, 2);
   tree.overwrite(paths.tsconfigSpecJson, tsconfigSpecJson);
 }
@@ -110,25 +124,25 @@ function updateAngularJson(): Rule {
     const projectName = json.defaultProject;
 
     json.projects[projectName].architect.test = {
-      'builder': '@angular-builders/jest:run',
-      'options': {}
+      builder: '@angular-builders/jest:run',
+      options: {},
     };
 
     // these are my personal preference - feel free to comment them out
-    json.projects[projectName].architect.lint.options.format = "stylish";
+    json.projects[projectName].architect.lint.options.format = 'stylish';
     json.projects[projectName].architect.lint.options.force = true;
     json.projects[projectName].architect.e2e.options.port = 4299;
 
     const angularJson = JSON.stringify(json, null, 2);
     tree.overwrite(paths.angularJson, angularJson);
     return tree;
-  }
+  };
 }
 
 function addJestConf(): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     const source = url('./files');
-    const rules = [ template({ dot: '.', }) ];
+    const rules = [template({ dot: '.' })];
     return mergeWith(
       apply(source, [
         ...rules,
@@ -141,7 +155,7 @@ function addJestConf(): Rule {
           }
           return null;
         }),
-      ]),
+      ])
     )(tree, _context);
   };
 }

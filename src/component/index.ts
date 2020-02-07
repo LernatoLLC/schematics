@@ -43,9 +43,7 @@ function setupOptions(options: any): any {
 
     if (name === '') {
       throw new Error(
-        `Invalid component name: ${
-          options.name
-        }. Name it something other than "Component"`
+        `Invalid component name: ${options.name}. Name it something other than "Component"`
       );
     } else {
       options.name = name;
@@ -61,7 +59,7 @@ function createFiles(options: any): Rule {
   return mergeWith(
     apply(url('./files'), [
       filter(
-        path => !path.includes('.module') || options.module || options.route
+        (path) => !path.includes('.module') || options.module || options.route
       ),
       template({
         ...fileExtensions,

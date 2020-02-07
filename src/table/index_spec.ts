@@ -8,7 +8,11 @@ const collectionPath = path.join(__dirname, '../collection.json');
 describe('table', () => {
   it('generates the module file by default', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('table', { name: 'test-table', prefix: 'tst' }, Tree.empty());
+    const tree = runner.runSchematic(
+      'table',
+      { name: 'test-table', prefix: 'tst' },
+      Tree.empty()
+    );
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test-table/test-table.component.spec.ts`,
@@ -22,7 +26,11 @@ describe('table', () => {
 
   it('generates the module file when route is true', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('table', { name: 'test-table', prefix: 'tst', route: true }, Tree.empty());
+    const tree = runner.runSchematic(
+      'table',
+      { name: 'test-table', prefix: 'tst', route: true },
+      Tree.empty()
+    );
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test-table/test-table.component.spec.ts`,

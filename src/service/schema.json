@@ -11,7 +11,5 @@
       "x-prompt": "Please enter a name for your service"
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": ["name"]
 }

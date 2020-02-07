@@ -24,8 +24,5 @@
       "x-prompt": "Is this a routeable module?"
     }
   },
-  "required": [
-    "name",
-    "prefix"
-  ]
+  "required": ["name", "prefix"]
 }

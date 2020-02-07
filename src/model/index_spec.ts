@@ -8,7 +8,11 @@ const collectionPath = path.join(__dirname, '../collection.json');
 describe('model', () => {
   it('generates the expected model files', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('model', { name: 'test-model' }, Tree.empty());
+    const tree = runner.runSchematic(
+      'model',
+      { name: 'test-model' },
+      Tree.empty()
+    );
 
     expect(tree.files).toEqual([
       `/${paths.modelsDir}/index.ts`,

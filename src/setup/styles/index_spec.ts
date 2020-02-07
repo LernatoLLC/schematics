@@ -10,8 +10,6 @@ describe('setup-jest', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
     const tree = runner.runSchematic('setup-jest', {}, Tree.empty());
 
-    expect(tree.files).toEqual([
-      paths.jestConf,
-    ]);
+    expect(tree.files).toEqual([paths.jestConf]);
   });
 });

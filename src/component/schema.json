@@ -4,7 +4,6 @@
   "title": "Component Schema",
   "type": "object",
   "properties": {
-
     "name": {
       "alias": "n",
       "type": "string",
@@ -34,10 +33,6 @@
       "description": "Should this component be routeable?",
       "x-prompt": "Is this a routeable module?"
     }
-
   },
-  "required": [
-    "name",
-    "prefix"
-  ]
+  "required": ["name", "prefix"]
 }

@@ -1,17 +1,16 @@
 import { dasherize } from '@angular-devkit/core/src/utils/strings';
 import { Tree } from '@angular-devkit/schematics';
 
-export const warningMessage = '// WARNING: This file is auto-generated and gets overwritten.\n' +
+export const warningMessage =
+  '// WARNING: This file is auto-generated and gets overwritten.\n' +
   '// It will keep anything that adheres to the established patterns, but everything else will be lost.\n\n';
 
 export function getExports(fileContents: string): string[] {
   let lines = fileContents.trim().split('\n');
 
   let exports = lines
-    .filter(l => l.includes('export') && l.includes('from'))
-    .map(l => l
-      .replace(/[\s\S]*['"]\.\//, '')
-      .replace(/['"];?[\s]*$/, ''));
+    .filter((l) => l.includes('export') && l.includes('from'))
+    .map((l) => l.replace(/[\s\S]*['"]\.\//, '').replace(/['"];?[\s]*$/, ''));
 
   return exports;
 }
@@ -33,7 +32,11 @@ export function addToExports(fileContents: string, name: string): string {
   return contents;
 }
 
-export function exportFromFile(filePath: string, tree: Tree, options: any): void {
+export function exportFromFile(
+  filePath: string,
+  tree: Tree,
+  options: any
+): void {
   const fileContents = tree.read(filePath);
   const name = dasherize(options.name);
 
@@ -41,7 +44,10 @@ export function exportFromFile(filePath: string, tree: Tree, options: any): void
     const contents = `${warningMessage}export * from './${name}';\n`;
     tree.create(filePath, contents);
   } else {
-    const theExports = `${warningMessage}${addToExports(fileContents.toString(), name)}`;
+    const theExports = `${warningMessage}${addToExports(
+      fileContents.toString(),
+      name
+    )}`;
     tree.overwrite(filePath, theExports);
   }
 }

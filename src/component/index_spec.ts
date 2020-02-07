@@ -3,14 +3,16 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 import { paths } from '../utils';
 
-
-
 const collectionPath = path.join(__dirname, '../collection.json');
 
 describe('component', () => {
   it('does not create a module file when module === false', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('component', { name: 'test-component', prefix: 'tst', module: false }, Tree.empty());
+    const tree = runner.runSchematic(
+      'component',
+      { name: 'test-component', prefix: 'tst', module: false },
+      Tree.empty()
+    );
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test/test.component.spec.ts`,
@@ -23,7 +25,11 @@ describe('component', () => {
 
   it('generates the module file by default', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('component', { name: 'test-component', prefix: 'tst' }, Tree.empty());
+    const tree = runner.runSchematic(
+      'component',
+      { name: 'test-component', prefix: 'tst' },
+      Tree.empty()
+    );
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test/test.component.spec.ts`,
@@ -37,7 +43,11 @@ describe('component', () => {
 
   it('generates the module file when route is true', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('component', { name: 'test-component', prefix: 'tst', route: true }, Tree.empty());
+    const tree = runner.runSchematic(
+      'component',
+      { name: 'test-component', prefix: 'tst', route: true },
+      Tree.empty()
+    );
 
     expect(tree.files).toEqual([
       `/${paths.componentsDir}/test/test.component.spec.ts`,
