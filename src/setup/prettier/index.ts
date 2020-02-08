@@ -95,7 +95,7 @@ function updateTsLintJson(): Rule {
     json.rules['interface-name'] = true;
     json.rules['max-classes-per-file'] = [true, 1, 'exclude-class-expressions'];
     json.rules['member-access'] = true;
-    json.rules['member-ordering'] = [true, { order: 'fields-first' }];
+    json.rules['member-ordering'] = false;
     json.rules['no-consecutive-blank-lines'] = true;
     json.rules['no-require-imports'] = true;
     json.rules['ordered-imports'] = [
