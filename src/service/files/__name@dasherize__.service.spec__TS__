@@ -6,7 +6,7 @@ const api: any = {
 };
 
 let service: any;
-function init() {
+function init(): void {
   service = new <%= classify(name) %>Service(api);
 }
 

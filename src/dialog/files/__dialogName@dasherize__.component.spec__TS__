@@ -5,7 +5,7 @@ const dialog: any = {
 };
 
 let component: any;
-function init() {
+function init(): void {
   component = new <%= classify(dialogName) %>Component(dialog);
 }
 
