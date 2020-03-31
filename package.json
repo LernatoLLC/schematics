@@ -1,6 +1,6 @@
 {
   "name": "@lernato/schematics",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "license": "MIT",
   "description": "Angular schematics for doing things the @lernato way.",
   "author": "Lernato, LLC",
@@ -38,19 +38,19 @@
     "watch": "npm-watch"
   },
   "devDependencies": {
-    "@angular-devkit/core": "9.0.1",
-    "@angular-devkit/schematics": "9.0.1",
-    "@angular-devkit/schematics-cli": "0.900.1",
-    "@angular/cli": "9.0.1",
-    "@schematics/angular": "9.0.1",
-    "@types/jasmine": "3.5.3",
-    "@types/node": "13.7.0",
+    "@angular-devkit/core": "9.1.0",
+    "@angular-devkit/schematics": "9.1.0",
+    "@angular-devkit/schematics-cli": "0.901.0",
+    "@angular/cli": "9.1.0",
+    "@schematics/angular": "9.1.0",
+    "@types/jasmine": "3.5.10",
+    "@types/node": "13.9.8",
     "copy": "0.3.2",
     "jasmine": "3.5.0",
     "npm-watch": "0.6.0",
-    "rimraf": "3.0.1",
+    "rimraf": "3.0.2",
     "rxjs": "6.5.4",
-    "typescript": "3.7.5"
+    "typescript": "3.8.3"
   },
   "files": [
     "dist/",
